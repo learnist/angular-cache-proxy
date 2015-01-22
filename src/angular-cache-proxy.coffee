@@ -34,7 +34,7 @@ module.provider 'CacheProxy', ->
   @configure = (overrides) ->
     angular.extend configurables, overrides
 
-  @$get = ($q, $window, $timeout, $http, Restangular, localStorageService) ->
+  @$get = ($q, $timeout, $http, Restangular, localStorageService) ->
 
     class CacheProxy
 

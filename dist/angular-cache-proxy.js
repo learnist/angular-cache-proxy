@@ -14,7 +14,7 @@ module.provider('CacheProxy', function() {
   this.configure = function(overrides) {
     return angular.extend(configurables, overrides);
   };
-  this.$get = function($q, $window, $timeout, $http, Restangular, localStorageService) {
+  this.$get = function($q, $timeout, $http, Restangular, localStorageService) {
     var CacheProxy;
     return CacheProxy = (function() {
       var getCache, getCacheAndRequest, makeRequest, pruneUnimportantData, setCache, validate;
