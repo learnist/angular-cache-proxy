@@ -6,9 +6,19 @@ Store and retrieve API responses in local storage
 
 Add angular-cache-proxy to your .bower.json and bower install
 
-## Usage
+## API
 
-TODO: Write usage instructions
+* one(model, id, params) - Analogous to $http.get
+* list(model, id, params) - Analogous to calling getList() on a Restangular resource
+* get(model, id, params) - Analogous to calling get() on a Restangular resource
+* store(id, obj) - Manually store data
+* onCacheInvalid(callback) - Will execute callback function whenever server response invalidates local storage cache. Useful for indicating to the user that they may have stale content.
+
+Explanation of parameters:
+
+* model - A string representing the model being requested
+* id - A string representing the ID of the model requested
+* params - An object with key value pairs of additional params to send along with request
 
 ### Dependencies
 
@@ -21,7 +31,7 @@ MIT
 
 ### Todo's
 
- - Break out into RestangularCacheProxy and HttpCacheProxy, using CacheProxy base class
+* Break out into RestangularCacheProxy and HttpCacheProxy, using CacheProxy base class
 
 ## Contributing
 
