@@ -31,10 +31,24 @@ module.provider 'CacheProxy', ->
     # A callback to fire every time cache does not match the latest from the API
     cacheInvalidCallback: null
 
+    # The identifier for the header response that declares API version. Local storage
+    # will be cleared if this version is different than what was previously heard
+    versionTag: 'versiontag'
+
   @configure = (overrides) ->
     angular.extend configurables, overrides
 
   @$get = ($q, $timeout, $http, Restangular, localStorageService) ->
+
+    # check api version and clear cache if it differs from last known
+    Restangular.addResponseInterceptor (data, operation, what, url, response, deferred) ->
+      previousStoredRevision = localStorageService.get 'revision'
+      currentDeployRevision = response.headers().versiontag
+      if previousStoredRevision != currentDeployRevision
+        # console.log "Clearing local storage data from previous deploy, previous revision: #{previousStoredRevision}, new revision: #{currentDeployRevision}"
+        localStorageService.clearAll()
+        localStorageService.set 'revision', currentDeployRevision
+      data
 
     class CacheProxy
 
@@ -42,7 +56,7 @@ module.provider 'CacheProxy', ->
         cacheObj = localStorageService.get uniqueIdentifier
         return undefined if !cacheObj?
         if Date.now() > cacheObj.timestamp + configurables.expiry
-          console.log "Cache for #{uniqueIdentifier} older than expiry, ignoring"
+          # console.log "Cache for #{uniqueIdentifier} older than expiry, ignoring"
           return undefined
         cacheObj.json
 
@@ -137,7 +151,5 @@ module.provider 'CacheProxy', ->
 
       @onCacheInvalid: (callback) ->
         configurables.cacheInvalidCallback = callback
-
-      new CacheProxy()
 
   null
