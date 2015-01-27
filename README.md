@@ -1,6 +1,8 @@
 # Angular Cache Proxy
 
-Store and retrieve API responses in local storage
+Speed up the render time of your site by using locally stored copies of API responses. Replace calls to $http or Restangular with CacheProxy. Promises will be resolved with local versions, then will be kept up-to-date with an API request in the background.
+
+Speed up the render time of your site by using locally stored copies of API responses. Replace calls to $http or Restangular with CacheProxy. Promises will be resolved with local versions, then will be kept up-to-date with an API request in the background.
 
 ## Installation
 
