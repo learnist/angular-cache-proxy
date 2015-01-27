@@ -20,7 +20,21 @@ Explanation of parameters:
 * id - A string representing the ID of the model requested
 * params - An object with key value pairs of additional params to send along with request
 
-### Dependencies
+## Configuration
+
+* verifyCache - With verifyCache set to false, if data at uniqueIdentifier exists in local storage then we do not call the API for the latest version to verify that the local is up to date (default: true)
+
+* baseUrl - Prepending to all $http calls. If using Restangular, use RestangularProvider.setBaseUrl(<baseUrl>) in your app.config (default: "")
+
+* unimportantKeys - Keys which either change too frequently or are not important enough to trigger a reload of the page should they not match values in cache (default: [])
+
+* expiry - When to consider a cached version stale and re-request from server, in milliseconds (default: 1000 * 60 * 60 * 24 * 7 # one week)
+
+* cacheInvalidCallback - A callback to fire every time cache does not match the latest from the API (default: null)
+
+* versionTag - The identifier for the header response that declares API version. Local storage will be cleared if this version is different than what was previously heard (default: 'versiontag')
+
+## Dependencies
 
 * [angular-local-storage](https://github.com/grevory/angular-local-storage)
 * [Restangular](https://github.com/mgonto/restangular)
