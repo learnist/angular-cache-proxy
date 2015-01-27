@@ -22,14 +22,14 @@ Explanation of parameters:
 
 ### Dependencies
 
-* [angular-local-storage]:https://github.com/grevory/angular-local-storage
-* [Restangular]:https://github.com/mgonto/restangular
+* [angular-local-storage](https://github.com/grevory/angular-local-storage)
+* [Restangular](https://github.com/mgonto/restangular)
 
 ## License
 
 MIT
 
-### Todo's
+### Todo
 
 * Break out into RestangularCacheProxy and HttpCacheProxy, using CacheProxy base class
 
