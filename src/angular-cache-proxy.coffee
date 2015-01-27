@@ -21,8 +21,8 @@ module.provider 'CacheProxy', ->
     # RestangularProvider.setBaseUrl(<baseUrl>) in your app.config
     baseUrl: ""
 
-    # Keys which either change too frequently or are not important enough to trigger
-    # a reload of the page should they not match values in cache
+    # Keys which either change too frequently or are not important enough to invalidate
+    # cache should they not match local values
     unimportantKeys: []
 
     # When to consider a cached version stale and re-request from server, in milliseconds

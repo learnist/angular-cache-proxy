@@ -26,7 +26,7 @@ Explanation of parameters:
 
 * baseUrl - Prepending to all $http calls. If using Restangular, use RestangularProvider.setBaseUrl(<baseUrl>) in your app.config (default: "")
 
-* unimportantKeys - Keys which either change too frequently or are not important enough to trigger a reload of the page should they not match values in cache (default: [])
+* unimportantKeys - Keys which either change too frequently or are not important enough to invalidate cache should they not match local values (default: [])
 
 * expiry - When to consider a cached version stale and re-request from server, in milliseconds (default: 1000 * 60 * 60 * 24 * 7 # one week)
 
