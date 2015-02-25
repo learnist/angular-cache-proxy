@@ -1,7 +1,7 @@
 {
   "name": "angular-cache-proxy",
   "description": "Store and retrieve API responses in local storage",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://github.com/learnist/angular-cache-proxy",
   "author": "Buck DeFore <bdefore@gmail.com>",
   "repository": {
