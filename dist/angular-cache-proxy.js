@@ -56,16 +56,12 @@ module.provider('CacheProxy', function() {
 
       validate = function(oldVersion, newVersion) {
         var version, _i, _len, _ref;
-        if (newVersion.updatedAt != null) {
-          return oldVersion.updatedAt === newVersion.updatedAt;
-        } else {
-          _ref = [newVersion, oldVersion];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            version = _ref[_i];
-            pruneUnimportantData(version);
-          }
-          return JSON.stringify(oldVersion) === JSON.stringify(newVersion);
+        _ref = [newVersion, oldVersion];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          version = _ref[_i];
+          pruneUnimportantData(version);
         }
+        return JSON.stringify(oldVersion) === JSON.stringify(newVersion);
       };
 
       pruneUnimportantData = function(obj) {
