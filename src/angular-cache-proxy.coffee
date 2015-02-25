@@ -67,14 +67,8 @@ module.provider 'CacheProxy', ->
         localStorageService.set key, cacheObj
 
       validate = (oldVersion, newVersion) ->
-        if newVersion.updatedAt?
-          # such as board data, we don't care if views have incremented
-          oldVersion.updatedAt == newVersion.updatedAt
-        else
-          # such as /categories/0?extraFields=promoted
-          pruneUnimportantData version for version in [newVersion, oldVersion]
-
-          JSON.stringify(oldVersion) == JSON.stringify(newVersion)
+        pruneUnimportantData(version) for version in [newVersion, oldVersion]
+        JSON.stringify(oldVersion) == JSON.stringify(newVersion)
 
       pruneUnimportantData = (obj) ->
         for key, data of obj
